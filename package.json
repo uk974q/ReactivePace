@@ -1,0 +1,39 @@
+{
+  "name": "react-understanding",
+  "version": "1.0.0",
+  "description": "Everything in React",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uk974q/ReactivePace.git"
+  },
+  "keywords": [
+    "React",
+    "AdvancedReact",
+    "UnderstandingReact",
+    "ReactisAwesome"
+  ],
+  "author": "Ullas Kakanadan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uk974q/ReactivePace/issues"
+  },
+  "homepage": "https://github.com/uk974q/ReactivePace#readme",
+  "browserslist": [
+    "defaults and supports es6-module",
+    "maintained node versions"
+  ],
+  "devDependencies": {
+    "parcel": "^2.9.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
