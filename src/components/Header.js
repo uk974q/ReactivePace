@@ -1,7 +1,7 @@
 const Header = () => {
     return (
         <div className="header-container">
-            <div className="logo"><i className="las la-utensils"></i></div>
+            <div className="logo"><i className="las la-utensils"></i><span>Reactive Delivery</span></div>
             <div className="links">
                 <ul>
                     <li>Home</li>
