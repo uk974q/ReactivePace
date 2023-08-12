@@ -1,8 +1,4 @@
-import React from "react"
-import ReactDOM  from "react-dom/client"
-import "./App.css"
-
-const responseList = [
+export const responseList = [
     {
         "info": {
             "id": "421108",
@@ -847,67 +843,3 @@ const responseList = [
         "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo"
     }
 ]
-
-const Header = () => {
-    return (
-        <div className="header-container">
-            <div className="logo"><i className="las la-utensils"></i></div>
-            <div className="links">
-                <ul>
-                    <li>Home</li>
-                    <li>About Us</li>
-                    <li>Contact</li>
-                    <li>Cart</li>
-                </ul>
-            </div>
-        </div>
-    )
-}
-
-const Card = ({resData}) => {
-    const {cloudinaryImageId, avgRating, name, cuisines, areaName} = resData.info
-    return(
-        <div className="card">
-            <img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+cloudinaryImageId}></img>
-            <div className="ratings">
-                <i className="las la-star"></i>
-                <span>{avgRating}</span>
-            </div>
-            <div className="card-info">
-                <h1 className="card-title">{name}</h1>
-                <p>{cuisines.join(", ")}</p>
-                <p>{areaName}</p>
-            </div>
-        </div>
-    )
-}
-
-const cardList = responseList.map(el => (<Card resData={el} key={el.info.id} />))
-
-const Body = () => {
-    return (
-        <div className="body-container">
-            Search
-            <div className="card-layout">
-                {cardList}
-            </div>
-        </div>
-    )
-}
-//Header
-            //Logo
-            //Links
-        //Body
-            //Search
-            //Card layout
-                //Card
-        //Footer
-
-const ReactFunctionalComponent = () => (
-    <div className="container">
-        <Header />
-        <Body />
-    </div>
-)
-let root = ReactDOM.createRoot(document.getElementById("root"))
-root.render(<ReactFunctionalComponent/>)
