@@ -66,13 +66,24 @@
 }
 .card .card-info .card-title{
     margin: 0;
-
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
 }
 .card .card-info p{
     margin: 0;
 
 }
-
+.search-container{
+    padding: 10px 0;
+}
+.search-container button{
+    border-radius: 5px;
+    background-color: coral;
+    margin-left: 10px;
+    color: #fff;
+}
 .filter{
     margin: 10px;
 }

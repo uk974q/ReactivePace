@@ -4,33 +4,56 @@ import ShimmerUICard from "./ShimmerUICard"
 
 const Body = () => {
     const [restaurants, setRestaurants] = useState([])
-    let cardList = restaurants?.map(el => (<Card resData={el} key={el.info.id} />))
-
-    function filterTopList(){
-        let filteredList = responseList.filter(el => el.info.avgRating > 4.5)
-        setRestaurants(filteredList)
-        cardList = restaurants.map(el => (<Card resData={el} key={el.info.id} />))
-    }
-
+    const [searchText, setSearchText] = useState("")
+    const [cardList, setCardList] = useState([])
+    
     useEffect(() => {
         fetchData()
     },[])
+    console.log("Rendered")
 
     const fetchData = async () => {
         let res = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=9.9312328&lng=76.26730409999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
         res = await res.json()
-        let responseList = (res?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+        console.log("Fetched")
+        let cardData = res.data.cards
+        let responseList = []
+        for(let i=0; i< cardData.length; i++){
+            let data = cardData[i].card?.card?.gridElements?.infoWithStyle?.restaurants
+            if(data && data.length > responseList.length){
+                console.log("Index",i)
+                responseList = data
+            }
+        }
         setRestaurants(responseList)
+        let cards = responseList.map(el => (<Card resData={el} key={el.info.id} />))
+        setCardList(cards)
+    }
+
+    const filterTopList = () => {
+        let filteredList = restaurants.filter(el => el.info.avgRating > 4)
+        let cards = filteredList.map(el => (<Card resData={el} key={el.info.id} />))
+        setCardList(cards)
+    }
+
+    const filterByText = (text) => {
+        let filteredList = restaurants.filter(el => el.info.name.toLowerCase().includes(text.toLowerCase()))
+        let cards = filteredList.map(el => (<Card resData={el} key={el.info.id} />))
+        setCardList(cards)
     }
 
     return (
         <div className="body-container">
+            <div className="search-container">
+                <input type="search" value={searchText} onChange={(event) => setSearchText(event.target.value)}/>
+                <button onClick={() => {filterByText(searchText)}}>Search</button>
+            </div>
             <div className="filter">
                 <button className="btn btn-filter" onClick={() => filterTopList()}>Filter Top Rated</button>
             </div>
-            {!restaurants.length && <ShimmerUICard />}
+            {!cardList.length && <ShimmerUICard />}
             {
-                restaurants.length > 1 && 
+                cardList.length >= 1 && 
                 <div className="card-layout">
                     {cardList}
                 </div>
