@@ -7,6 +7,7 @@ import Body from "./components/Body"
 import About from "./components/About"
 import Contact from "./components/Contact"
 import ErrorPage from "./components/ErrorPage"
+import Menu from "./components/Menu"
 
 const ReactFunctionalComponent = () => (
     <div className="container">
@@ -31,6 +32,10 @@ const appRouter = createBrowserRouter([
             {
                 path: "/contact",
                 element: <Contact />
+            },
+            {
+                path: "/restaurants/:resId",
+                element: <Menu />
             }
         ],
         errorElement: <ErrorPage />

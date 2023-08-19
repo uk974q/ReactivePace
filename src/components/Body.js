@@ -1,6 +1,7 @@
 import Card from "./Card"
 import { useEffect, useState } from "react"
 import ShimmerUICard from "./ShimmerUICard"
+import { SWIGGY_RESTAURANTS_API } from "../utils/constants"
 
 const Body = () => {
     const [restaurants, setRestaurants] = useState([])
@@ -13,7 +14,7 @@ const Body = () => {
     console.log("Rendered")
 
     const fetchData = async () => {
-        let res = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=9.9312328&lng=76.26730409999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+        let res = await fetch(SWIGGY_RESTAURANTS_API)
         res = await res.json()
         console.log("Fetched")
         let cardData = res.data.cards
