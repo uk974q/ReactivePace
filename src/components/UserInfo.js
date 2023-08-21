@@ -6,6 +6,10 @@ class UserInfo extends React.Component{
             admin : true
         } 
     }
+    componentDidMount(){
+        console.log("Constructor -> Render -> Did Mount")
+        console.log("Constructor -> REnder -> Child Constructor1 -> Child Render1 -> Child Constructor2 -> Child Render2 -> Child Did Mount1 -> Child Did Mount2 -> Parent Did Mount")
+    }
     render(){
         const {name} = this.props
         const {admin} = this.state
