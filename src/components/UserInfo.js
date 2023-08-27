@@ -1,4 +1,6 @@
 import React from "react"
+import Child1 from "./Child1"
+import Child2 from "./Child2"
 class UserInfo extends React.Component{
     constructor(props){
         super(props)
@@ -7,8 +9,13 @@ class UserInfo extends React.Component{
         } 
     }
     componentDidMount(){
-        console.log("Constructor -> Render -> Did Mount")
-        console.log("Constructor -> REnder -> Child Constructor1 -> Child Render1 -> Child Constructor2 -> Child Render2 -> Child Did Mount1 -> Child Did Mount2 -> Parent Did Mount")
+        console.log("PArent did mount")
+    }
+    componentDidUpdate(){
+        console.log("Parent did update")
+    }
+    componentWillUnmount(){
+        console.log("Parent did unmount")
     }
     render(){
         const {name} = this.props
@@ -21,6 +28,8 @@ class UserInfo extends React.Component{
                 </button>
                 <h3>India</h3>
                 <h3>xyz@react.com</h3>
+                <Child1 ></Child1>
+                <Child2 ></Child2>
             </div>
         )
     }
