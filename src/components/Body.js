@@ -2,11 +2,13 @@ import Card from "./Card"
 import { useEffect, useState } from "react"
 import ShimmerUICard from "./ShimmerUICard"
 import { SWIGGY_RESTAURANTS_API } from "../utils/constants"
+import useOnlineStatus from "../utils/useOnlineStatus"
 
 const Body = () => {
     const [restaurants, setRestaurants] = useState([])
     const [searchText, setSearchText] = useState("")
     const [cardList, setCardList] = useState([])
+    const isOnline = useOnlineStatus()
     
     useEffect(() => {
         fetchData()
@@ -45,18 +47,23 @@ const Body = () => {
 
     return (
         <div className="body-container">
-            <div className="search-container">
-                <input type="search" value={searchText} onChange={(event) => setSearchText(event.target.value)}/>
-                <button onClick={() => {filterByText(searchText)}}>Search</button>
-            </div>
-            <div className="filter">
-                <button className="btn btn-filter" onClick={() => filterTopList()}>Filter Top Rated</button>
-            </div>
-            {!cardList.length && <ShimmerUICard />}
             {
-                cardList.length >= 1 && 
-                <div className="card-layout">
-                    {cardList}
+            !isOnline ? (<div className="offline">You are offline</div>) : 
+                <div className ="online">
+                    <div className="search-container">
+                        <input type="search" value={searchText} onChange={(event) => setSearchText(event.target.value)}/>
+                        <button onClick={() => {filterByText(searchText)}}>Search</button>
+                    </div>
+                    <div className="filter">
+                        <button className="btn btn-filter" onClick={() => filterTopList()}>Filter Top Rated</button>
+                    </div>
+                    {!cardList.length && <ShimmerUICard />}
+                    {
+                        cardList.length >= 1 && 
+                        <div className="card-layout">
+                            {cardList}
+                        </div>
+                    }
                 </div>
             }
         </div>
