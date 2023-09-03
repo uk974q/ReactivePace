@@ -46,21 +46,21 @@ const Body = () => {
     }
 
     return (
-        <div className="body-container">
+        <div>
             {
-            !isOnline ? (<div className="offline">You are offline</div>) : 
-                <div className ="online">
-                    <div className="search-container">
-                        <input type="search" value={searchText} onChange={(event) => setSearchText(event.target.value)}/>
-                        <button onClick={() => {filterByText(searchText)}}>Search</button>
+            !isOnline ? (<div>You are offline</div>) : 
+                <div className="pt-2 mx-2">
+                    <div>
+                        <input className="border-2 border-black" type="search" value={searchText} onChange={(event) => setSearchText(event.target.value)}/>
+                        <button className="bg-blue-400 p-1 w-15 rounded ml-2 cursor-pointer" onClick={() => {filterByText(searchText)}}>Search</button>
                     </div>
-                    <div className="filter">
-                        <button className="btn btn-filter" onClick={() => filterTopList()}>Filter Top Rated</button>
+                    <div className="my-2">
+                        <button className="bg-yellow-300 p-1 w-15 rounded cursor-pointer" onClick={() => filterTopList()}>Filter Top Rated</button>
                     </div>
                     {!cardList.length && <ShimmerUICard />}
                     {
                         cardList.length >= 1 && 
-                        <div className="card-layout">
+                        <div className="grid gap-1 grid-cols-5">
                             {cardList}
                         </div>
                     }
