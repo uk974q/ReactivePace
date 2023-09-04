@@ -20,4 +20,15 @@ const Card = ({resData}) => {
     )
 }
 
+export const withVegNonVeg = (Card) => {
+    return ({resData}) => {
+        return (
+            <div className="relative">
+                <Card resData={...resData} key={resData.info.id}/>
+                <label className="absolute top-2 right-2 text-green-200 bg-green-900 border-white border-4 rounded m-2 p-2">Veg</label>
+            </div>
+        )
+    }
+}
+
 export default Card

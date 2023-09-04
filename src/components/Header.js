@@ -6,11 +6,11 @@ const Header = () => {
             <div><i className="las la-utensils"></i><span>Reactive Delivery</span></div>
             <div>
                 <ul className="flex gap-4">
-                    <li><Link to={"/"}>Home</Link></li>
-                    <li><Link to={"/grocery"}>Grocery</Link></li>
-                    <li><Link to={"/about"}>About Us</Link></li>
-                    <li><Link to={"/contact"}>Contact</Link></li>
-                    <li>Cart</li>
+                    <li className="hover:text-blue-400"><Link to={"/"}>Home</Link></li>
+                    <li className="hover:text-blue-400"><Link to={"/grocery"}>Grocery</Link></li>
+                    <li className="hover:text-blue-400"><Link to={"/about"}>About Us</Link></li>
+                    <li className="hover:text-blue-400"><Link to={"/contact"}>Contact</Link></li>
+                    <li className="hover:text-blue-400"><Link to={"/contact"}>Cart</Link></li>
                 </ul>
             </div>
         </div>

@@ -1,4 +1,4 @@
-import Card from "./Card"
+import Card, { withVegNonVeg } from "./Card"
 import { useEffect, useState } from "react"
 import ShimmerUICard from "./ShimmerUICard"
 import { SWIGGY_RESTAURANTS_API } from "../utils/constants"
@@ -9,6 +9,8 @@ const Body = () => {
     const [searchText, setSearchText] = useState("")
     const [cardList, setCardList] = useState([])
     const isOnline = useOnlineStatus()
+
+    const RestaurantCardWithType = withVegNonVeg(Card)
     
     useEffect(() => {
         fetchData()
@@ -29,19 +31,20 @@ const Body = () => {
             }
         }
         setRestaurants(responseList)
-        let cards = responseList.map(el => (<Card resData={el} key={el.info.id} />))
+        console.log("Response",responseList)
+        let cards = responseList.map(el => el.info.veg ? (<RestaurantCardWithType resData={el} key={el.info.id}/>) : (<Card resData={el} key={el.info.id} />))
         setCardList(cards)
     }
 
     const filterTopList = () => {
-        let filteredList = restaurants.filter(el => el.info.avgRating > 4)
-        let cards = filteredList.map(el => (<Card resData={el} key={el.info.id} />))
+        let filteredList = restaurants.filter(el => el.info.avgRating > 4.3)
+        let cards = filteredList.map(el => el.info.veg ? (<RestaurantCardWithType resData={el} key={el.info.id}/>) : (<Card resData={el} key={el.info.id} />))
         setCardList(cards)
     }
 
     const filterByText = (text) => {
         let filteredList = restaurants.filter(el => el.info.name.toLowerCase().includes(text.toLowerCase()))
-        let cards = filteredList.map(el => (<Card resData={el} key={el.info.id} />))
+        let cards = filteredList.map(el => el.info.veg ? (<RestaurantCardWithType resData={el} key={el.info.id}/>) : (<Card resData={el} key={el.info.id} />))
         setCardList(cards)
     }
 
@@ -50,11 +53,11 @@ const Body = () => {
             {
             !isOnline ? (<div>You are offline</div>) : 
                 <div className="pt-2 mx-2">
-                    <div>
-                        <input className="border-2 border-black" type="search" value={searchText} onChange={(event) => setSearchText(event.target.value)}/>
-                        <button className="bg-blue-400 p-1 w-15 rounded ml-2 cursor-pointer" onClick={() => {filterByText(searchText)}}>Search</button>
-                    </div>
-                    <div className="my-2">
+                    <div className="flex justify-between mb-3">
+                        <div>
+                            <input className="border-2 border-black" type="search" value={searchText} onChange={(event) => setSearchText(event.target.value)}/>
+                            <button className="bg-blue-400 p-1 w-15 rounded ml-2 cursor-pointer" onClick={() => {filterByText(searchText)}}>Search</button>
+                        </div>
                         <button className="bg-yellow-300 p-1 w-15 rounded cursor-pointer" onClick={() => filterTopList()}>Filter Top Rated</button>
                     </div>
                     {!cardList.length && <ShimmerUICard />}
