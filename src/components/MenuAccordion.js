@@ -1,5 +1,3 @@
-import { useState } from "react"
-
 const MenuAccordion = ({category, keyIndex, details, toggle, handler}) => {
     return(
         <div className="bg-gray-50 shadow-lg my-2">

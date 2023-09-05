@@ -35,7 +35,7 @@ const useRestaurantMenu = (resId) => {
                         let info = el.card.info
                         // console.log("Info",info)
                         let key = keyPrefix + "_"+info.id+"_"+i
-                        obj[itemCategory].push(<MenuItem key={key} name={info.name} src={info.imageId}/>)
+                        obj[itemCategory].push(<MenuItem key={key} name={info.name} src={info.imageId} action={true}/>)
                     })
                 }
             })

@@ -9,18 +9,24 @@ import Contact from "./components/Contact"
 import ErrorPage from "./components/ErrorPage"
 import Menu from "./components/Menu"
 import UserContext from "./utils/UserContext"
+import { Provider } from "react-redux"
+import appStore from "./utils/appStore"
+import Cart from "./components/Cart"
 // import Grocery from "./components/Grocery"
 
 const Grocery = lazy(() => import("./components/Grocery"))
 const About = lazy(() => import("./components/About"))
+const Cart = lazy(() => import("./components/Cart"))
 
 const ReactFunctionalComponent = () => (
-    <UserContext.Provider value = {{loggedUser : "Actual User"}}>
-        <div className="container">
-            <Header />
-            <Outlet />
-        </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+        <UserContext.Provider value = {{loggedUser : "Actual User"}}>
+            <div className="container">
+                <Header />
+                <Outlet />
+            </div>
+        </UserContext.Provider>
+    </Provider>
 )
 
 const appRouter = createBrowserRouter([
@@ -43,6 +49,10 @@ const appRouter = createBrowserRouter([
             {
                 path: "/grocery",
                 element: <Suspense fallback={<div>Loading...</div>}><Grocery /></Suspense>
+            },
+            {
+                path: "/cart",
+                element: <Suspense fallback={<div>Loading....</div>}><Cart /></Suspense>
             },
             {
                 path: "/restaurants/:resId",
