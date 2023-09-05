@@ -8,16 +8,19 @@ import Body from "./components/Body"
 import Contact from "./components/Contact"
 import ErrorPage from "./components/ErrorPage"
 import Menu from "./components/Menu"
+import UserContext from "./utils/UserContext"
 // import Grocery from "./components/Grocery"
 
 const Grocery = lazy(() => import("./components/Grocery"))
 const About = lazy(() => import("./components/About"))
 
 const ReactFunctionalComponent = () => (
-    <div className="container">
-        <Header />
-        <Outlet />
-    </div>
+    <UserContext.Provider value = {{loggedUser : "Actual User"}}>
+        <div className="container">
+            <Header />
+            <Outlet />
+        </div>
+    </UserContext.Provider>
 )
 
 const appRouter = createBrowserRouter([

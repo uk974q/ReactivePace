@@ -1,6 +1,7 @@
 import React from "react"
 import Child1 from "./Child1"
 import Child2 from "./Child2"
+import UserContext from "../utils/UserContext"
 class UserInfo extends React.Component{
     constructor(props){
         super(props)
@@ -30,6 +31,9 @@ class UserInfo extends React.Component{
                 <h3>xyz@react.com</h3>
                 <Child1 ></Child1>
                 <Child2 ></Child2>
+                <UserContext.Consumer>
+                    {({loggedUser}) => <h1>{loggedUser}</h1>}
+                </UserContext.Consumer>
             </div>
         )
     }
