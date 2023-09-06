@@ -1,0 +1,11 @@
+# Setting up testing 
+- Install React Testing Library
+- Install Jest
+- Babel dependencies
+- Configure Babel
+- Configure parcel to disable default babel transpilation
+- Init jest npx jest --init
+- Install Jsdom Library
+- For running test of React components
+    -- Install jest-dom
+    -- configure babel again to include jest-dom 
