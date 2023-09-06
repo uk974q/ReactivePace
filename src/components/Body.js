@@ -15,12 +15,12 @@ const Body = () => {
     useEffect(() => {
         fetchData()
     },[])
-    console.log("Rendered")
+    // console.log("Rendered")
 
     const fetchData = async () => {
         let res = await fetch(SWIGGY_RESTAURANTS_API)
         res = await res.json()
-        console.log("Fetched")
+        // console.log("Fetched")
         let cardData = res.data.cards
         let responseList = []
         for(let i=0; i< cardData.length; i++){
@@ -31,7 +31,7 @@ const Body = () => {
             }
         }
         setRestaurants(responseList)
-        console.log("Response",responseList)
+        // console.log("Response",responseList)
         let cards = responseList.map(el => el.info.veg ? (<RestaurantCardWithType resData={el} key={el.info.id}/>) : (<Card resData={el} key={el.info.id} />))
         setCardList(cards)
     }
@@ -55,10 +55,10 @@ const Body = () => {
                 <div className="pt-2 mx-2">
                     <div className="flex justify-between mb-3">
                         <div>
-                            <input className="border-2 border-black" type="search" value={searchText} onChange={(event) => setSearchText(event.target.value)}/>
-                            <button className="bg-blue-400 p-1 w-15 rounded ml-2 cursor-pointer" onClick={() => {filterByText(searchText)}}>Search</button>
+                            <input data-testid="search-input" className="border-2 border-black" type="search" value={searchText} onChange={(event) => setSearchText(event.target.value)}/>
+                            <button name="search" className="bg-blue-400 p-1 w-15 rounded ml-2 cursor-pointer" onClick={() => {filterByText(searchText)}}>Search</button>
                         </div>
-                        <button className="bg-yellow-300 p-1 w-15 rounded cursor-pointer" onClick={() => filterTopList()}>Filter Top Rated</button>
+                        <button name="filter" className="bg-yellow-300 p-1 w-15 rounded cursor-pointer" onClick={() => filterTopList()}>Filter Top Rated</button>
                     </div>
                     {!cardList.length && <ShimmerUICard />}
                     {

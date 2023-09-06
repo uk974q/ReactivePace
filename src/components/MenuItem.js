@@ -15,8 +15,8 @@ const MenuItem = ({name,src,action}) => {
             <img src={IMAGE_CDN + src} className="w-1/2 h-full mx-2"></img>
             <li className="col-span-2">{name}</li>
             {action ? 
-                (<i onClick={addHandler} className="col-span-1 las la-cart-plus text-center text-blue-600 cursor-pointer hover:text-red-400"></i>) :
-                (<i onClick={removeHandler} className="col-span-1 las la-trash-alt text-center text-blue-600 cursor-pointer hover:text-red-400"></i>) 
+                (<i onClick={addHandler} data-testid="addToCart" className="col-span-1 las la-cart-plus text-center text-blue-600 cursor-pointer hover:text-red-400"></i>) :
+                (<i onClick={removeHandler} data-testid="removeFromCart" className="col-span-1 las la-trash-alt text-center text-blue-600 cursor-pointer hover:text-red-400"></i>) 
             }
 
         </div>

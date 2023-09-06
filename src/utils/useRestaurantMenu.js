@@ -22,7 +22,7 @@ const useRestaurantMenu = (resId) => {
                 setHotelInfo(hotelDetails)
             }
             let cardList = menuData[i]?.groupedCard?.cardGroupMap?.REGULAR
-            console.log("Response first",cardList)
+            // console.log("Response first",cardList)
             // let obj = {}
             cardList?.cards?.forEach(el => {
                 let itemCategory = el?.card?.card?.title

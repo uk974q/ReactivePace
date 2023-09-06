@@ -6,7 +6,7 @@ import { useSelector } from "react-redux"
 const Header = () => {
     let user = useContext(UserContext)
     let cartItems = useSelector((store) => store.cart.items)
-    console.log("CartItems", cartItems)
+    // console.log("CartItems", cartItems)
     return (
         <div className="flex justify-between p-2 shadow">
             <div><i className="las la-utensils"></i><span>Reactive Delivery</span></div>

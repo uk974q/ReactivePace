@@ -2,7 +2,6 @@ import { render, screen } from "@testing-library/react"
 import Contact from "../src/components/Contact"
 import "@testing-library/jest-dom"
 
-
 describe("Test Suit for Contact Us Page", () => {
     test("Testing the heading", () => {
         render(<Contact />)

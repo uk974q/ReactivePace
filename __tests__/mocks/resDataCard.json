@@ -1,0 +1,79 @@
+{
+    "info": {
+        "id": "57240",
+        "name": "McDonald's",
+        "cloudinaryImageId": "ee5f8e06b300efc07c9fe3f4df40dfc4",
+        "locality": "Padma Junction",
+        "areaName": "MG Road",
+        "costForTwo": "₹400 for two",
+        "cuisines": [
+            "Burgers",
+            "Beverages",
+            "Cafe",
+            "Desserts"
+        ],
+        "avgRating": 4.3,
+        "feeDetails": {
+            "restaurantId": "57240",
+            "fees": [
+                {
+                    "name": "BASE_DISTANCE",
+                    "fee": 6300
+                },
+                {
+                    "name": "BASE_TIME"
+                },
+                {
+                    "name": "ANCILLARY_SURGE_FEE"
+                }
+            ],
+            "totalFee": 6300
+        },
+        "parentId": "630",
+        "avgRatingString": "4.3",
+        "totalRatingsString": "10K+",
+        "sla": {
+            "deliveryTime": 39,
+            "lastMileTravel": 7.5,
+            "serviceability": "SERVICEABLE",
+            "slaString": "39 mins",
+            "lastMileTravelString": "7.5 km",
+            "iconType": "ICON_TYPE_EMPTY"
+        },
+        "availability": {
+            "nextCloseTime": "2023-09-06 23:45:00",
+            "opened": true
+        },
+        "badges": {},
+        "isOpen": true,
+        "type": "F",
+        "badgesV2": {
+            "entityBadges": {
+                "imageBased": {},
+                "textBased": {},
+                "textExtendedBadges": {}
+            }
+        },
+        "aggregatedDiscountInfoV3": {
+            "header": "10% OFF",
+            "subHeader": "ABOVE ₹999",
+            "discountTag": "FLAT DEAL"
+        },
+        "differentiatedUi": {
+            "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+            "differentiatedUiMediaDetails": {
+                "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+                "lottie": {},
+                "video": {}
+            }
+        },
+        "reviewsSummary": {},
+        "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+        "restaurantOfferPresentationInfo": {}
+    },
+    "analytics": {},
+    "cta": {
+        "link": "https://www.swiggy.com/restaurants/mcdonalds-padma-junction-mg-road-kochi-57240",
+        "type": "WEBLINK"
+    }
+}
